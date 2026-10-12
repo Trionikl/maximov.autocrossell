@@ -1,0 +1,54 @@
+/* === Визуальная разметка code-блоков в чеклистах (инжект через assets.js) === */
+/* Блоки живут внутри <pre>, который всегда тёмный (#0f172a) — стили рассчитаны
+   на тёмный фон и читаемы в светлой и тёмной темах страницы. */
+
+/* Контейнер <pre> после разбора: own-whitespace нормальный, переносы внутри
+   секций сохраняются через .blk-body */
+.step-text pre.has-blocks{white-space:normal;padding:8px;background:#0f172a}
+
+.blk{margin:6px 0;border-radius:0 6px 6px 0;padding:8px 12px;position:relative}
+.blk:first-child{margin-top:0}
+.blk:last-child{margin-bottom:0}
+.blk-label{display:inline-block;font:700 10px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;text-transform:uppercase;letter-spacing:.5px;padding:2px 8px;border-radius:4px;margin-bottom:6px}
+.blk-body{font:inherit;white-space:pre-wrap;word-break:break-word;display:block}
+
+/* SQL — мягкий индиго */
+.blk--sql{background:#161b32;border-left:4px solid #4f5fa8}
+.blk--sql .blk-label{background:#26314a;color:#a5b4fc}
+.blk--sql .blk-body{color:#c9d1d9}
+
+/* Терминал — приглушённый циан */
+.blk--terminal{background:#12232e;border-left:4px solid #2a7f8f}
+.blk--terminal .blk-label{background:#183a45;color:#67e8f9}
+.blk--terminal .blk-body{color:#c9d1d9}
+
+/* ОЖИДАЕМЫЙ РЕЗУЛЬТАТ — матовый синий (без чисто-белого текста и насыщенных
+   заливок: фон #152436, бейдж #243044/#93c5fd), отличается от SQL подложкой. */
+.blk--expected{background:#152436;border-left:4px solid #35507a}
+.blk--expected .blk-label{background:#243044;color:#93c5fd;font-weight:700}
+.blk--expected .blk-body{color:#bac7d5}
+
+/* КАК ПРОВЕРИТЬ — серо-синий */
+.blk--info{background:#141d2a;border-left:4px solid #475569}
+.blk--info .blk-label{background:#1f2a3a;color:#cbd5e1}
+.blk--info .blk-body{color:#cbd5e1}
+
+/* Нейтральный остаток (действия/путь) — без крикливого ярлыка */
+.blk--plain{background:#141d2a;border-left:4px solid #334155}
+.blk--plain .blk-body{color:#cbd5e1}
+
+/* Внутренние <span class="c"> (комментарии) внутри цветных секций */
+.blk--sql .c{color:#8b96cf}
+.blk--terminal .c{color:#5fb8c9}
+.blk--expected .c,.blk--info .c,.blk--plain .c{color:#94a3b8}
+
+/* Отмеченный (done) шаг: оригинал зачёркивает весь .step-text, из-за чего
+   line-through наследуется и в код. Для разобранных шагов (есть .blk) снимаем
+   зачёркивание с источника и возвращаем только на заголовок шага (.step-head). */
+.step.done .step-text.parsed{text-decoration:none}
+.step.done .step-text.parsed .step-head{text-decoration:line-through}
+
+@media(max-width:600px){
+  .blk{padding:6px 8px}
+  .blk-label{font-size:9px;padding:2px 6px}
+}

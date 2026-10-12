@@ -1,0 +1,111 @@
+/**
+ * AutoCrossell Recommendations Styles
+ * Полноразмерный блок рекомендаций перед футером.
+ *
+ * @package maximov.autocrossell
+ */
+
+/* === Секция рекомендаций === */
+.autocrossell-recommendations {
+	margin-bottom: 30px;
+}
+
+/* === Заголовок секции === */
+.autocrossell-recommendations__title {
+	margin-bottom: 20px;
+}
+
+/* === Контейнер карточки === */
+.autocrossell-recommendations .product-item-container {
+	height: 100%;
+	position: relative;
+	cursor: pointer;
+}
+
+/* === Карточка товара === */
+.autocrossell-recommendations .product-item {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	border-radius: 6px;
+	background-color: #ffffff;
+	transition:
+		box-shadow 0.25s ease,
+		transform 0.25s ease;
+	overflow: hidden;
+}
+
+.autocrossell-recommendations .product-item:hover {
+	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+	transform: translateY(-3px);
+}
+
+/* === Область изображения === */
+.autocrossell-recommendations .product-item-image-wrapper {
+	display: block;
+	position: relative;
+	width: 100%;
+	padding-top: 100%;
+	overflow: hidden;
+	background-color: #f5f5f5;
+	margin-bottom: 10px;
+}
+
+.autocrossell-recommendations .product-item-image-slide {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: block;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+}
+
+/* === Название товара — читаемое, без обрезки === */
+.autocrossell-recommendations .product-item-title {
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 1.35;
+	min-height: 38px;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	margin-bottom: 6px;
+	color: #333;
+	text-decoration: none;
+}
+
+.autocrossell-recommendations .product-item-title a {
+	color: #333;
+	text-decoration: none;
+}
+
+.autocrossell-recommendations .product-item-container:hover .product-item-title a {
+	color: #007bff;
+}
+
+/* === Блок цены === */
+.autocrossell-recommendations .product-item-price-container {
+	margin-top: auto;
+	margin-bottom: 10px;
+}
+
+/* === Адаптивность === */
+@media (max-width: 768px) {
+	.autocrossell-recommendations .product-item-title {
+		font-size: 13px;
+		min-height: 34px;
+	}
+	.autocrossell-recommendations .product-item-price-current {
+		font-size: 15px;
+	}
+	.autocrossell-recommendations .product-item:hover {
+		transform: none;
+		box-shadow: none;
+	}
+}

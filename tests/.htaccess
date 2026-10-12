@@ -1,0 +1,13 @@
+# Запрещаем прямой доступ к файлам состояния чеклиста (Apache 2.4+)
+<IfModule mod_authz_core.c>
+    <FilesMatch "^statuses_.*\.json$">
+        Require all denied
+    </FilesMatch>
+</IfModule>
+# Совместимость со старыми версиями Apache 2.2
+<IfModule !mod_authz_core.c>
+    <FilesMatch "^statuses_.*\.json$">
+        Order allow,deny
+        Deny from all
+    </FilesMatch>
+</IfModule>

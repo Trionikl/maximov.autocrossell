@@ -1,0 +1,100 @@
+/**
+ * AutoCrossell Recommendations — Widget styles (skeleton + layout)
+ *
+ * @package maximov.autocrossell
+ * @source documentation d8b79e99d9a1897a (ActionFilter), 2e37e6a512263167 (filters)
+ */
+
+/* === Injection wrapper — полноразмерный контейнер виджета === */
+.autocrossell-inject-wrap {
+	max-width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0 15px;
+}
+
+/* Когда обёртка сама стала .container (фолбэк вне контентной сетки) —
+   отдаём ширину Bootstrap, чтобы блок встал ровно по сетке каталога. */
+.autocrossell-inject-wrap.container {
+	max-width: none;
+}
+
+/* === Skeleton container === */
+.autocrossell-skeleton {
+	margin-bottom: 30px;
+}
+
+.autocrossell-skeleton-header {
+	height: 28px;
+	margin-bottom: 20px;
+	width: 220px;
+	background-color: #f0f0f0;
+	border-radius: 4px;
+}
+
+/* Сетка .autocrossell-skeleton-row обеспечивается Bootstrap-гридом
+   (row product-item-list-col-4 -> col-6 col-md-3) — собственный
+   flex/gap убран, чтобы 4 колонки по 25% вставали в один ряд. */
+.autocrossell-skeleton-row {
+	margin-bottom: 0;
+}
+
+.autocrossell-skeleton-col {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+/* image placeholder (square 1:1 like the real card) */
+.autocrossell-skeleton-img {
+	position: relative;
+	width: 100%;
+	padding-top: 100%;
+	background-color: #f5f5f5;
+	border-radius: 6px;
+	overflow: hidden;
+}
+
+.autocrossell-skeleton-img::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: repeating-linear-gradient(90deg, #ecebeb, #ecebeb 8px, #f0f0f0 8px, #f0f0f0 16px);
+	animation: autocrossell-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes autocrossell-pulse {
+	0% { opacity: 0.6; }
+	50% { opacity: 1; }
+	100% { opacity: 0.6; }
+}
+
+.autocrossell-skeleton-title {
+	height: 40px;
+	margin-top: 10px;
+	background-color: #f0f0f0;
+	border-radius: 4px;
+}
+
+.autocrossell-skeleton-price {
+	height: 20px;
+	margin-top: 8px;
+	width: 45%;
+	background-color: #f0f0f0;
+	border-radius: 4px;
+}
+
+.autocrossell-skeleton-btn {
+	height: 32px;
+	margin-top: auto;
+	margin-bottom: 0;
+	background-color: #e8e8e8;
+	border-radius: 4px;
+}
+
+/* hide skeleton once real content is injected */
+.autocrossell-skeleton--done {
+	display: none;
+}
+
+/* Адаптив мобильных (2 колонки) обеспечивает Bootstrap col-6. */
